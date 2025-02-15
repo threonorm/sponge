@@ -2,6 +2,7 @@ val egg_simpl_goal : int(* far-fetched-ness limit *) -> Names.GlobRef.t option (
 val egg_search_evars : int(* far-fetched-ness limit *) -> unit Proofview.tactic
 
 val egg_cvc5 : unit -> unit Proofview.tactic
+val egg_tptp : unit -> unit Proofview.tactic
 
 (* uconstr = Ltac_pretype.closed_glob_constr with holes = CHole,
    open_constr = EConstr.t with holes being evars *)

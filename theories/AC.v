@@ -1,6 +1,7 @@
 Require Import egg.Loader.
 Require Import Coq.ZArith.ZArith. (* TODO make plugin work even if ZArith is not loaded *)
 
+
 Section WithLemmas.
   Context (U: Type)
           (add: U -> U -> U)
@@ -17,7 +18,8 @@ Section WithLemmas.
   Proof.
     clear add_opp.
     intros.
-    egg_simpl_goal 6. (* max ffn that occurs is 5 *)
+    Set Egg Backend "TPTPBackend". (* makes it much slower *)
+    egg_tptp.
     cbv beta.
   Abort.
 

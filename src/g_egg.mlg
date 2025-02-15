@@ -29,6 +29,11 @@ TACTIC EXTEND egg_search_evars
   { Egg_tactic.egg_search_evars ffn_limit }
 END
 
+TACTIC EXTEND egg_tptp
+| [ "egg_tptp"] ->
+  { Egg_tactic.egg_tptp ()}
+END
+
 TACTIC EXTEND inspect
 | [ "inspect" open_constr(c) ] ->
   { Egg_tactic.inspect c }
