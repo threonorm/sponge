@@ -1,11 +1,7 @@
 open Dolmen
-(* minimal.ml *)
+
 module V6_3_0 = Dolmen_tptp_v6_3_0
-(* module Location = V6_3_0.Location  Built-in location module *)
-(* module MyTerm =  Built-in Term module *)
-
 module Parser = V6_3_0.Make (Std.Loc)(Std.Id)(Std.Term)(Std.Statement)
-
 
 open Std 
 open Term
@@ -28,15 +24,6 @@ let extract_data_list t =
             | _ -> failwith "Not a $data application")
        | _ -> failwith "Expected symbol in $data application")
   | _ -> failwith "Expected $data application"
-
-(* Convert a term assumed to be a symbol with a simple name to its string *)
-(* let get_simple_name t =
-  match t.term with
-  | Symbol sym ->
-      (match sym.Dolmen_std.Id.name with
-       | Name.Simple s -> s
-       | _ -> failwith "Expected a simple name")
-  | _ -> failwith "Expected a symbol" *)
 
 (* Main extraction function.
    It expects an inference term of the form:
