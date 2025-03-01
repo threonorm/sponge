@@ -5,9 +5,10 @@ src/META.egg-plugin
 theories/Data.v
 theories/Egg.v
 theories/Loader.v
-theories/test.v
-theories/WordSideconds.v
+theories/ScTPTPTest.v
 
+src/tptp.ml
+src/tptp.mli
 src/egg_tactic.ml
 src/egg_tactic.mli
 src/g_egg.mlg

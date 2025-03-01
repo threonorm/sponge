@@ -1,1 +1,1 @@
-CAMLPKGS=-package sexplib
+CAMLPKGS=-package sexplib -package dolmen -package dolmen_loop

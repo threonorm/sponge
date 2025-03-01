@@ -1,7 +1,7 @@
 
 package "coquetier" (
   directory = "."
-  requires = "coq-core.plugins.ltac, sexplib"
+  requires = "coq-core.plugins.ltac, sexplib, dolmen, dolmen_loop"
   archive(byte) = "coquetier.cma"
   archive(native) = "coquetier.cmxa"
   plugin(byte) = "coquetier.cma"
