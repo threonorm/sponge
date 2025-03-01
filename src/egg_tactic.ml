@@ -272,10 +272,11 @@ module TPTPBackend : BACKEND = struct
           String.uppercase_ascii (String.sub s 1 (String.length s - 1))
         else if String.starts_with ~prefix:"&" s then
           (* Remove & prefix for function symbols *)
-          String.sub s 1 (String.length s - 1)
+          if (s = "&@eq") then "@eq" else
+          String.cat "tptpr" (String.sub s 1 (String.length s - 1))
         else if String.starts_with ~prefix:"!" s then
           (* Remove ! prefix for constructors *)
-          String.sub s 1 (String.length s - 1)
+          String.cat "tptpr" (String.sub s 1 (String.length s - 1))
         else s
 
     | Sexp.List (Sexp.Atom "annot" :: term :: _tp :: _ffn :: []) ->
@@ -793,7 +794,7 @@ let parse_constr_expr s =
   Pcoq.parse_string Pcoq.Constr.constr
     (* to avoid clashes of our names with SMT-defined names (eg and, not, true,
        we prefix them with &, and need to undo that here *)
-    (Str.global_replace (Str.regexp "!") "" (Str.global_replace (Str.regexp "&") "" s))
+    ((Str.global_replace (Str.regexp "tptpr") "" (Str.global_replace (Str.regexp "!") "" (Str.global_replace (Str.regexp "&") "" s))))
 
 let print_constr_expr env sigma e =
   Pp.string_of_ppcmds (Ppconstr.pr_constr_expr env sigma e)

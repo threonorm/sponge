@@ -16,3 +16,16 @@ Goal forall
     intros.
     egg_tptp.
   Qed.
+
+
+Goal forall 
+    (div_one: (forall x, d x 1  =  x))
+    (cancel_denominator : (forall x y, m (d x y) y =x ))
+    (invert_div : forall x y, d x y  = d 1 (d y x)),
+    d (m (d 2 3) (d 3 2)) 1 = 1.
+  Proof.
+  Set Egg Misc Logging.
+    intros.
+    egg_tptp.
+  Qed.
+
